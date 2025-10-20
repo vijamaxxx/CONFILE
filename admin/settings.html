@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CONFILE — Settings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../styles/base.css"/>
+  <link rel="stylesheet" href="../styles/admin-styles/dashboard.css"/>
+</head>
+<body class="app-layout">
+  <aside id="sidebar" class="sidebar-panel">
+    <div class="sidebar-header">
+      <div class="sidebar-logo-group">
+        <img src="../Resources/CONFILE-LOGO.png" alt="CONFILE" class="logo-image"/>
+        <span class="logo-text">CONFILE</span>
+      </div>
+    </div>
+    <nav class="sidebar-navigation">
+      <h3 class="sidebar-section-title">Admin Menu</h3>
+      <a href="adminDashboard.html" class="nav-link"><span>Dashboard</span></a>
+      <a href="adminDocuments.html" class="nav-link"><span>Documents</span></a>
+      <a href="adminUser.html" class="nav-link"><span>Users</span></a>
+      <a href="adminAnalytics.html" class="nav-link"><span>Analytics</span></a>
+      <a href="adminAudit.html" class="nav-link"><span>Audit Logs</span></a>
+      <a href="settings.html" class="nav-link-active"><span>Settings</span></a>
+      <div class="sidebar-separator"></div>
+      <a href="#login" class="nav-link"><i data-lucide="log-out" class="icon-medium icon-brand"></i><span>Logout</span></a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button id="sidebarToggle" class="mobile-toggle-button" aria-label="Open sidebar">
+          <i data-lucide="menu" class="icon-medium"></i>
+        </button>
+        <form class="search-bar" role="search">
+          <i data-lucide="search" class="search-icon"></i>
+          <input class="search-input" type="search" placeholder="Search analytics..."/>
+        </form>
+      </div>
+      <div class="topbar-right">
+        <button class="notification-button"><i data-lucide="bell" class="icon-medium"></i></button>
+        <div class="user-profile">
+          <img class="user-avatar" src="https://api.dicebear.com/8.x/initials/svg?seed=AD" alt="Admin"/>
+          <div class="user-info">
+            <span class="user-name">Alex Doe</span>
+            <span class="user-role">Administrator</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="section-block">
+        <div class="section-header">
+          <h2 class="section-title">Settings</h2>
+        </div>
+
+        <div class="panel" style="padding:18px; display:flex; gap:20px; flex-direction:column;">
+          <div>
+            <h3>General</h3>
+            <div style="display:flex;gap:12px;align-items:center;margin-top:10px;">
+              <label style="font-weight:700">Site title</label>
+              <input class="form-input" style="padding:8px;border:1px solid var(--border);border-radius:8px" value="CONFILE"/>
+            </div>
+          </div>
+
+          <div>
+            <h3>Security</h3>
+            <label style="display:flex;align-items:center;gap:12px;margin-top:10px">
+              <input type="checkbox" checked/> Require admin approval for new users
+            </label>
+          </div>
+
+          <div>
+            <h3>Integrations</h3>
+            <p class="muted">Manage API keys and connected services.</p>
+            <button class="btn btn-primary" style="margin-top:8px">Manage Integrations</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../scripts/admin.js" defer></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CONFILE — Documents</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+  <link rel="stylesheet" href="../styles/base.css"/>
+  <link rel="stylesheet" href="../styles/admin-styles/dashboard.css"/>
+  <link rel="stylesheet" href="../styles/admin-styles/documents.css"/>
+</head>
+<body class="app-layout">
+  <aside id="sidebar" class="sidebar-panel">
+    <div class="sidebar-header">
+      <div class="sidebar-logo-group">
+        <img src="../Resources/CONFILE-LOGO.png" alt="CONFILE" class="logo-image"/>
+        <span class="logo-text">CONFILE</span>
+      </div>
+      <button id="sidebarClose" class="sidebar-close-button" aria-label="Close sidebar">
+        <i data-lucide="x" class="icon-medium"></i>
+      </button>
+    </div>
+    <nav class="sidebar-navigation">
+      <h3 class="sidebar-section-title">Admin Menu</h3>
+      <a href="adminDashboard.html" class="nav-link"><i data-lucide="layout-dashboard" class="icon-medium icon-brand"></i><span>Dashboard</span></a>
+      <a href="adminDocuments.html" class="nav-link-active"><i data-lucide="folder-open" class="icon-medium icon-brand"></i><span>Documents</span></a>
+      <a href="adminUser.html" class="nav-link"><i data-lucide="users" class="icon-medium icon-brand"></i><span>Users</span></a>
+      <a href="adminAnalytics.html" class="nav-link"><i data-lucide="bar-chart-3" class="icon-medium icon-brand"></i><span>Analytics</span></a>
+      <a href="adminAudit.html" class="nav-link"><i data-lucide="history" class="icon-medium icon-brand"></i><span>Audit Logs</span></a>
+      <a href="settings.html" class="nav-link"><i data-lucide="settings" class="icon-medium icon-brand"></i><span>Settings</span></a>
+      <div class="sidebar-separator"></div>
+      <a href="#login" class="nav-link"><i data-lucide="log-out" class="icon-medium icon-brand"></i><span>Logout</span></a>
+    </nav>
+  </aside>
+  <main class="main-content">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button id="sidebarToggle" class="mobile-toggle-button" aria-label="Open sidebar">
+          <i data-lucide="menu" class="icon-medium"></i>
+        </button>
+        <form class="search-bar" role="search" onsubmit="return false;">
+          <i data-lucide="search" class="search-icon"></i>
+          <input id="searchFiles" class="search-input" type="search" placeholder="Search documents..."/>
+        </form>
+      </div>
+      <div class="topbar-right">
+        <button class="notification-button"><i data-lucide="bell" class="icon-medium"></i></button>
+        <div class="user-profile">
+          <img class="user-avatar" src="https://api.dicebear.com/8.x/initials/svg?seed=AD" alt="Admin"/>
+          <div class="user-info">
+            <span class="user-name">Alex Doe</span>
+            <span class="user-role">Administrator</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <div class="document-controls">
+        <div class="topbar-right">
+            <button id="uploadBtn" class="btn btn-primary"><i data-lucide="upload" class="icon-medium"></i><span>Upload</span></button>
+            <button id="convertBtn" class="btn btn-secondary"><i data-lucide="image" class="icon-medium"></i><span>Convert Image</span></button>
+        </div>
+    </div>
+
+    <section class="documents-page">
+      <div id="foldersContainer" class="folder-section">
+        <div class="section-header">
+          <h2 class="section-title">Folders</h2>
+          <button id="newFolderBtn" class="btn btn-secondary">
+            <i data-lucide="folder-plus" class="icon-medium"></i><span>New Folder</span>
+          </button>
+        </div>
+        <div class="folders-grid list-view" id="folderList"></div>
+      </div>
+      <div id="documentsContainer" class="documents-section list-view">
+        <div class="section-header">
+          <h2 class="section-title">Documents</h2>
+          <div class="section-actions">
+            <span class="filter-label">Type</span>
+            <div class="file-filter" role="tablist" aria-label="Document type filter">
+              <button type="button" class="file-filter-active" data-type="all" aria-selected="true">All</button>
+              <button type="button" class="file-filter-button" data-type="pdf" aria-selected="false">PDF</button>
+              <button type="button" class="file-filter-button" data-type="image" aria-selected="false">Images</button>
+              <button type="button" class="file-filter-button" data-type="docs" aria-selected="false">Docs</button>
+              <button type="button" class="file-filter-button" data-type="excel" aria-selected="false">Excel</button>
+            </div>
+            <span id="filterCount" class="filter-count"></span>
+          </div>
+        </div>
+        <div class="doc-table-card">
+          <div class="doc-table-head" aria-hidden="true">
+            <div class="col col-name">Name</div>
+            <div class="col col-type">Type</div>
+            <div class="col col-size">Size</div>
+            <div class="col col-modified">Date Modified</div>
+            <div class="col col-owner">Owner</div>
+            <div class="col col-actions">Actions</div>
+          </div>
+          <div class="documents-grid" id="documentList"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="../scripts/admin.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

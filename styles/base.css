@@ -1,0 +1,457 @@
+:root {
+    --bg: #f7f8fa;
+    --panel: #ffffff;
+    --border: #e7e9ee;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --white: #ffffff;
+    --brand: #2563eb;
+    --brand-50: #eff6ff;
+    --brand-100: #dbeafe;
+    --edge-pad: 24px;
+    --content-pad: 24px;
+    --space-1: 6px;
+    --space-2: 10px;
+    --space-3: 14px;
+    --space-4: 18px;
+    --space-5: 22px;
+    --space-6: 26px;
+    --space-7: 32px;
+    --btn-pad-y: 10px;
+    --btn-pad-x: 12px;
+    --btn-radius: 10px;
+    --shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-tiny: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* ===== Base & Global Resets ===== */
+*,
+.mobile-toggle-button,
+.notification-button,
+.sidebar-close-button {
+    box-sizing: border-box;
+    /* Combine all appearance: none and border: none here as they often go together */
+    appearance: none;
+    border: none;
+    background: transparent;
+}
+
+html, body {
+    height: 100%;
+}
+
+body.app-layout {
+    margin: 0;
+    font-family: "SF Pro Text", "SF Pro Display", -apple-system, system-ui, "Poppins", Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.55;
+}
+
+/* ===== Sidebar ===== */
+.sidebar-panel {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 300px;
+    background: var(--white);
+    border-right: 1px solid var(--border);
+    overflow: auto;
+    transform: translateX(0);
+    transition: transform .25s ease;
+    z-index: 30;
+}
+
+.sidebar-panel.hidden {
+    transform: translateX(-100%);
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-6) var(--edge-pad);
+    border-bottom: 1px solid var(--border);
+}
+
+.sidebar-logo-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.logo-image {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 10%;
+}
+
+.logo-text {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--text);
+}
+
+.sidebar-close-button {
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Sidebar navigation */
+.sidebar-navigation {
+    padding: var(--space-5) var(--edge-pad);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.sidebar-section-title {
+    font-size: .9rem;
+    color: var(--muted);
+    font-weight: 700;
+    margin: 0 0 var(--space-1) 0;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+}
+
+.sidebar-separator {
+    border-top: 1px solid var(--border);
+    margin: var(--space-4) 0;
+}
+
+.nav-link,
+.nav-link-active {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 700;
+    transition: background .15s ease;
+}
+
+.nav-link:hover { background: var(--brand-50); }
+.nav-link-active {
+    background: var(--brand-50);
+    color: var(--brand);
+}
+
+/* ===== Main ===== */
+.main-content {
+    margin-left: 300px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Topbar ===== */
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: 15.8px var(--edge-pad);
+    border-bottom: 1px solid var(--border);
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.topbar-left,
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.mobile-toggle-button {
+    display: none;
+    cursor: pointer;
+}
+
+/* ===== Notifications ===== */
+.notification-button {
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: #374151;
+    padding: 8px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease;
+}
+.notification-button:hover { background: #f3f4f6; }
+
+/* ===== Search ===== */
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 12px 14px;
+    min-width: 420px;
+    flex: 1 1 720px;
+    max-width: 860px;
+}
+.search-bar:focus-within {
+    border-color: var(--brand);
+}
+.search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    color: #111827;
+    font-size: 1rem;
+}
+
+/* ===== Button Text ===== */
+.button-text {
+    margin-left: 8px;
+    font-size: 14px;
+}
+
+/* ===== Icons ===== */
+.icon-small {
+    width: 18px;
+    height: 18px;
+}
+
+.icon-medium {
+    width: 22px;
+    height: 22px;
+}
+
+.icon-brand {
+    color: var(--brand);
+}
+
+/* Combined all selectors with the same icon size/alignment properties */
+.button-icon > .icon-medium,
+.sidebar-close-button > .icon-medium,
+.mobile-toggle-button > .icon-medium,
+.notification-button > .icon-medium,
+.see-all-button > .icon-medium,
+.create-insights-button > .icon-medium,
+.icon-button {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+/* ===== User profile ===== */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 6px 8px;
+    border-radius: 12px;
+}
+
+.user-profile:hover {
+    background: #f9fafb;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: block;
+    border: 1px solid var(--border);
+}
+
+/* Combined .user-info, .user-name, and .user-role properties */
+.user-info {
+    display: flex; /* Changed from 'block' in original to use flex for children layout */
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.user-name {
+    display: block;
+    font-weight: 700;
+    font-size: .95rem; /* Moved from original .user-info block to here */
+}
+
+.user-role {
+    display: block;
+    margin-top: 2px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* Removed redundant rules for user-profile/user-info/user-name/user-role */
+
+/* ===== Global button utilities (used by admin JS & templates) ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--text);
+    text-decoration: none;
+}
+.btn:hover { background: var(--brand-50); text-decoration: none; }
+
+.btn-primary {
+    background: var(--brand);
+    color: var(--white);
+    border-color: var(--brand);
+}
+.btn-primary:hover { background:#1944ba; }
+
+/* secondary (outline) */
+.btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border);
+}
+
+/* Ensure links styled as buttons do not underline */
+a.btn, a.btn-primary, a.btn-secondary {
+    text-decoration: none;
+}
+
+/* ===== Media Queries (Consolidated) ===== */
+@media (max-width: 1024px) {
+    .sidebar-panel {
+        transform: translateX(-100%);
+    }
+
+    .sidebar-panel.show {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 1025px) {
+    /* Combined .sidebar-close-button and .mobile-toggle-button */
+    .sidebar-close-button,
+    .mobile-toggle-button {
+        display: none;
+    }
+}
+
+/* ===== Modal (used by admin.js openModal) ===== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.45);
+    z-index: 120;
+    padding: 24px;
+}
+.modal-content {
+    width: 100%;
+    max-width: 820px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(2,6,23,0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+}
+.modal-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+.modal-close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+}
+.modal-close:hover { background: var(--brand-50); }
+.modal-body {
+    padding: 18px 20px;
+    max-height: calc(100vh - 260px);
+    overflow: auto;
+}
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    padding: 12px 20px;
+    border-top: 1px solid var(--border);
+    justify-content: flex-end;
+    background: transparent;
+}
+
+/* ===== Dropzone ===== */
+.dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 22px;
+    border: 1.5px dashed var(--border);
+    border-radius: 12px;
+    background: var(--brand-50);
+    color: var(--muted);
+    cursor: pointer;
+    text-align: center;
+}
+.dropzone p { margin: 0; font-weight: 600; color: var(--text); }
+.dropzone .icon-medium { color: var(--brand); }
+.dropzone.dragover {
+    background: linear-gradient(90deg, rgba(37,99,235,0.06), rgba(37,99,235,0.02));
+    border-color: var(--brand);
+}
+
+/* ===== File list inside upload modal ===== */
+.upload-file-list {
+    margin-top: 10px;
+    border-radius: 8px;
+    background: #fafafa;
+    padding: 8px;
+    border: 1px solid #f1f5f9;
+    max-height: 160px;
+    overflow: auto;
+}
+.upload-file-list > div { padding: 6px 8px; border-bottom: 1px dashed #eee; }
+.upload-file-list > div:last-child { border-bottom: none; }
+
+/* ===== Progress bar ===== */
+.progress-bar {
+    width: 100%;
+    background: #f1f5f9;
+    border-radius: 8px;
+    height: 10px;
+    overflow: hidden;
+    margin-top: 8px;
+    border: 1px solid #eef2ff;
+}
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--brand), #0b66d6);
+    transition: width 260ms linear;
+}
+
+/* Ensure modal buttons use btn / btn-primary classes visually */
+.modal-actions .btn { margin: 0; }
+.modal-actions .btn-primary { min-width: 120px; }

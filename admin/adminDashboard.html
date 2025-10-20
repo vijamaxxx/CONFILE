@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>CONFILE — Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" type="image/png" href="../resources/CONFILE-LOGO.png"/>
+
+  <!-- ===== Styles ===== -->
+  <link rel="stylesheet" href="../styles/base.css"/>
+  <link rel="stylesheet" href="../styles/admin-styles/dashboard.css"/>
+</head>
+<body class="app-layout">
+  <!-- ===== Sidebar ===== -->
+  <aside id="sidebar" class="sidebar-panel">
+    <div class="sidebar-header">
+      <div class="sidebar-logo-group">
+        <img src="../Resources/CONFILE-LOGO.png" alt="CONFILE" class="logo-image"/>
+        <span class="logo-text">CONFILE</span>
+      </div>
+      <button id="sidebarClose" class="sidebar-close-button" aria-label="Close sidebar">
+        <i data-lucide="x" class="icon-button"></i>
+      </button>
+    </div>
+
+    <!-- Sidebar navigation -->
+    <nav class="sidebar-navigation">
+      <h3 class="sidebar-section-title">Admin Menu</h3>
+      <a href="adminDashboard.html" class="nav-link-active"><i data-lucide="layout-dashboard" class="icon-medium icon-brand"></i><span>Dashboard</span></a>
+      <a href="adminDocuments.html" class="nav-link"><i data-lucide="folder-open" class="icon-medium icon-brand"></i><span>Documents</span></a>
+      <a href="adminUser.html" class="nav-link"><i data-lucide="users" class="icon-medium icon-brand"></i><span>Users</span></a>
+      <a href="adminAnalytics.html" class="nav-link"><i data-lucide="bar-chart-3" class="icon-medium icon-brand"></i><span>Analytics</span></a>
+      <a href="adminAudit.html" class="nav-link"><i data-lucide="history" class="icon-medium icon-brand"></i><span>Audit Logs</span></a>
+      <a href="settings.html" class="nav-link"><i data-lucide="settings" class="icon-medium icon-brand"></i><span>Settings</span></a>
+      <div class="sidebar-separator"></div>
+      <a href="#login" class="nav-link"><i data-lucide="log-out" class="icon-medium icon-brand"></i><span>Logout</span></a>
+    </nav>
+  </aside>
+
+  <!-- ===== Main ===== -->
+  <main class="main-content">
+    <header class="topbar"> 
+      <div class="topbar-left">
+        <button id="sidebarToggle" class="mobile-toggle-button" aria-label="Open sidebar">
+          <i data-lucide="menu" class="icon-button"></i>
+        </button>
+        <form class="search-bar" role="search">
+          <i data-lucide="search" class="icon-button"></i>
+          <input class="search-input" type="search" placeholder="Search documents, users, analytics..."/>
+        </form>
+      </div>
+      <div class="topbar-right">
+        <button class="notification-button"><i data-lucide="bell" class="icon-button"></i></button>
+        <div class="user-profile">
+          <img class="user-avatar" src="https://api.dicebear.com/8.x/initials/svg?seed=AD" alt="Admin"/>
+          <div class="user-info">
+            <span class="user-name">Admin</span>
+            <span class="user-role">Administrator</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="dashboard" class="page-section">
+      <!-- ===== KPIs ===== -->
+      <div class="section-block">
+        <div class="section-header">
+          <h2 class="section-title">Key Performance Indicators</h2>
+        </div>
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <span class="card-title">Total Uploads</span>
+              <i data-lucide="file-up" class="icon-medium icon-brand"></i>
+            </div>
+            <div class="card-value" id="kpiUploads">0</div>
+            <div class="card-note" id="kpiUploadsNote">No trend yet.</div>
+          </div>
+          <div class="dashboard-card">
+            <div class="card-header">
+              <span class="card-title">Storage Used</span>
+              <i data-lucide="hard-drive" class="icon-medium icon-brand"></i>
+            </div>
+            <div class="card-value" id="kpiStorage">0 GB</div>
+            <div class="card-note" id="kpiStorageNote">of 10 GB limit</div>
+          </div>
+          <div class="dashboard-card">
+            <div class="card-header">
+              <span class="card-title">Active Users</span>
+              <i data-lucide="user-check" class="icon-medium icon-brand"></i>
+            </div>
+            <div class="card-value" id="kpiActiveUsers">0</div>
+            <div class="card-note" id="kpiActiveUsersNote">Last 30 days</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== AI Business Analytics ===== -->
+      <div class="section-block" id="analytics">
+        <div class="section-header">
+          <h2 class="section-title">AI Business Analytics</h2>
+          <div class="header-actions">
+            <button class="see-all-button" id="btnSeeAll">
+              <i data-lucide="arrow-right" class="icon-button"></i>
+              <span class="button-text">See all</span>
+            </button>
+            <a class="create-insights-button" id="btnCreateInsights" href="createInsights.html">
+              <i data-lucide="sparkles" class="icon-button"></i>
+              <span class="button-text">Create Insights</span>
+            </a>
+          </div>
+        </div>
+        <div class="analytics-empty-panel" id="aiEmpty">
+          <i data-lucide="bot" class="icon-medium icon-brand"></i>
+          <div class="empty-message">
+            <strong>No charts generated yet</strong>
+            <span>AI-generated analytics will appear here once you have created some.</span>
+          </div>
+        </div>
+        <div id="aiChartsContainer" class="analytics-grid" style="display: none;">
+          <div class="analytics-card">
+            <div class="analytics-card-header">
+              <span class="analytics-card-title">Document Uploads</span>
+              <span class="analytics-card-subtitle">Last 30 days</span>
+            </div>
+            <div class="chart-placeholder">
+              <i data-lucide="bar-chart-3" class="icon-medium"></i>
+              <span>Chart will appear here</span>
+            </div>
+          </div>
+          <div class="analytics-card">
+            <div class="analytics-card-header">
+              <span class="analytics-card-title">Conversion Success</span>
+              <span class="analytics-card-subtitle">OCR → Office files</span>
+            </div>
+            <div class="chart-placeholder">
+              <i data-lucide="check-circle" class="icon-medium"></i>
+              <span>Success rate chart</span>
+            </div>
+          </div>
+          <div class="analytics-card">
+            <div class="analytics-card-header">
+              <span class="analytics-card-title">Top Document Types</span>
+              <span class="analytics-card-subtitle">By upload volume</span>
+            </div>
+            <div class="chart-placeholder">
+              <i data-lucide="file-text" class="icon-medium"></i>
+              <span>Document type breakdown</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Recent Activities ===== -->
+      <div class="section-block">
+        <div class="section-header">
+          <h2 class="section-title">Recent Activities</h2>
+          <div class="activity-filter" role="tablist" aria-label="Activity filter">
+            <button type="button" class="activity-filter-active" data-days="0" aria-selected="true">Today</button>
+            <button type="button" class="activity-filter-button" data-days="7" aria-selected="false">Last 7 days</button>
+            <button type="button" class="activity-filter-button" data-days="30" aria-selected="false">Last month</button>
+          </div>
+        </div>
+        <div class="panel">
+          <ul class="activity-list" id="activityList">
+            <!-- Activities populated by JS -->
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../scripts/admin.js" defer></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

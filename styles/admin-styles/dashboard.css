@@ -1,0 +1,226 @@
+/* ===== Buttons ===== */
+.see-all-button {
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--text);
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  border-radius: var(--btn-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease;
+}
+.see-all-button:hover { background: #f3f4f6; }
+
+.create-insights-button {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600; /* match see-all */
+  color: var(--white);
+  background: var(--brand);
+  border: 1px solid var(--brand);
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  border-radius: var(--btn-radius);
+}
+.create-insights-button:link,
+.create-insights-button:visited {
+  text-decoration: none;
+}
+.create-insights-button:hover {
+  background: #1944ba;
+  border-color: #1944ba;
+}
+.create-insights-button .icon-small {
+  margin-right: 14px;
+  color: var(--white);
+}
+
+/* Ensure action buttons (upload/convert/new folder) use consistent btn classes */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--text);
+}
+.btn:hover { background: var(--brand-50); }
+
+/* primary variant */
+.btn-primary {
+  background: var(--brand);
+  color: #fff;
+  border-color: var(--brand);
+}
+.btn-primary:hover { background: #1944ba; }
+
+/* ensure upload-btn also inherits btn styles */
+.upload-btn { /* preserve gradient, but also be consistent */
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+/* ===== Sections ===== */
+.page-section {
+  padding: var(--space-6) var(--content-pad);
+  flex: 1;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+.section-block { margin-bottom: var(--space-7); }
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: 0 0 var(--space-3) 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--space-4);
+}
+.section-title { margin: 0; font-size: 1.25rem; font-weight: 800; }
+.header-actions { display: flex; align-items: center; gap: var(--space-3); }
+
+/* ===== KPI Cards ===== */
+.dashboard-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+.dashboard-card {
+  grid-column: span 4;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+}
+.card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-2); }
+.card-title { font-size: 1rem; color: #334155; }
+.card-value { font-size: 1.9rem; font-weight: 800; margin: 6px 0 4px; }
+.card-note { font-size: .95rem; color: #6b7280; }
+
+/* ===== Panels ===== */
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; }
+
+.analytics-empty-panel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 26px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.empty-message { display: flex; flex-direction: column; gap: 4px; }
+.empty-message strong { font-size: 1.05rem; }
+.empty-message span { color: var(--muted); }
+
+.analytics-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  margin-top: var(--space-3);
+}
+.analytics-card {
+  grid-column: span 4;
+  background: var(--panel);
+  border: 1px solid var(--brand-100);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+.analytics-card-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 10px; }
+.analytics-card-title { font-weight: 800; font-size: 1rem; }
+.analytics-card-subtitle { color: var(--muted); font-size: .95rem; }
+.chart-placeholder {
+  width: 100%;
+  height: 260px;
+  border: 1px dashed var(--brand-100);
+  border-radius: 12px;
+}
+
+/* ===== Activities ===== */
+.activity-filter {
+  display: inline-flex;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 4px;
+}
+.activity-filter-button {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #111827;
+  padding: calc(var(--btn-pad-y) - 2px) calc(var(--btn-pad-x) - 2px);
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.activity-filter-button:hover { background: #e9eef5; }
+.activity-filter-active {
+  appearance: none;
+  border: 1px solid #e5e7eb;
+  background: var(--white);
+  color: #111827;
+  padding: calc(var(--btn-pad-y) - 2px) calc(var(--btn-pad-x) - 2px);
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.activity-list { list-style: none; margin: 0; padding: 0; }
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.activity-item:last-child { border-bottom: none; }
+.activity-empty { padding: 18px 20px; color: #6b7280; font-size: .98rem; text-align: center; }
+.activity-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex: 0 0 36px;
+  border: 1px solid var(--border);
+  background: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #374151;
+}
+.activity-body { flex: 1; }
+.activity-text { margin: 0 0 6px 0; font-size: 1rem; }
+.activity-meta { font-size: .92rem; color: #6b7280; }
+
+/* ===== Responsive ===== */
+@media (max-width: 1200px) {
+  .dashboard-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .dashboard-card { grid-column: span 6; }
+}
+@media (max-width: 700px) {
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .dashboard-card { grid-column: span 1; }
+  .create-insights-button {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+  .create-insights-button .icon-medium {
+    width: 22px;
+    height: 22px;
+  }
+}

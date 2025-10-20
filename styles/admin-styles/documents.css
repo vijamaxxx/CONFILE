@@ -1,0 +1,182 @@
+/* layout spacing */
+.documents-page { display: flex; flex-direction: column; gap: 16px; padding: var(--content-pad); }
+
+/* sections: titles only (no big cards) */
+.folder-section, .documents-section { background: transparent; border: none; padding: 0; margin-bottom: 24px; }
+.section-header { display: flex; align-items: center; justify-content: space-between; margin: 6px 0; }
+.section-header h3 { font-size: 1.1rem; font-weight: 700; }
+
+/* folders: list and grid view */
+.folders-grid.list-view { display: block; }
+.folders-grid:not(.list-view) { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-top: 8px; }
+.folder-item { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 12px; box-shadow: none; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.folders-grid.list-view .folder-item { margin: 8px 0; }
+.folder-item .left { display: inline-flex; align-items: center; gap: 10px; }
+.folder-item .actions { display: inline-flex; gap: 6px; }
+
+/* documents: the table area is a white card */
+.doc-table-card {
+  background: var(--white);
+  border: none;
+  border-radius: 14px;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* list view */
+.documents-section.list-view .documents-grid { display: block; }
+.doc-table-head {
+  display: grid;
+  grid-template-columns: 1.8fr .6fr .6fr 1fr .9fr auto;
+  gap: 10px;
+  padding: 16px 12px;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+.document-row {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 16px 12px;
+  display: grid;
+  grid-template-columns: 1.8fr .6fr .6fr 1fr .9fr auto;
+  gap: 10px;
+  align-items: center;
+  margin: 0;
+  box-shadow: none;
+  border-bottom: 1px solid var(--border);
+}
+.document-row:last-child { border-bottom: none; }
+.document-row:hover { background: var(--brand-50); }
+.document-row .name { display: flex; align-items: center; gap: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.document-row .type, .document-row .size, .document-row .modified, .document-row .owner { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.document-row .actions { display: flex; gap: 6px; justify-content: flex-end; }
+
+/* grid view */
+.documents-section:not(.list-view) .documents-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-top: 8px; }
+.documents-section:not(.list-view) .doc-table-card { display: none; }
+.documents-section:not(.list-view) .doc-table-head { display: none; }
+.document-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 12px; box-shadow: var(--shadow-tiny); display: flex; flex-direction: column; gap: 10px; }
+.document-card .name { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.document-card .meta { display: flex; justify-content: space-between; color: var(--muted); font-size: .9rem; }
+
+/* file type icons */
+.file-icon { width: 32px; height: 32px; color: var(--brand); }
+
+/* filter */
+.section-actions { display: flex; align-items: center; gap: var(--space-3); }
+.filter-label { font-size: .95rem; color: var(--muted); font-weight: 600; }
+.filter-count { font-size: .95rem; color: var(--muted); font-weight: 600; margin-left: var(--space-2); }
+.file-filter {
+  display: inline-flex;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 4px;
+}
+.file-filter-button {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #111827;
+  padding: calc(var(--btn-pad-y) - 2px) calc(var(--btn-pad-x) - 2px);
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.file-filter-button:hover { background: #e9eef5; }
+.file-filter-active {
+  appearance: none;
+  border: 1px solid #e5e7eb;
+  background: var(--white);
+  color: #111827;
+  padding: calc(var(--btn-pad-y) - 2px) calc(var(--btn-pad-x) - 2px);
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* actions */
+.icon-btn {
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: #374151;
+  padding: 6px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease;
+}
+.icon-btn:hover { background: #f3f4f6; }
+
+/* buttons */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  border-radius: var(--btn-radius);
+  font-size: .98rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.button-primary { background: var(--brand); color: var(--white); }
+.button-primary:hover { filter: brightness(.95); }
+.button-ghost { background: var(--white); border-color: var(--border); }
+.button-ghost:hover { background: #f9fafb; }
+
+/*
+ * NEW STYLES: Document Controls Bar (Top sticky bar for document actions)
+ * NOTE: The topbar height is approximately 72px (14px top, 18px bottom padding + ~40px content).
+ */
+.document-controls {
+    position: sticky;
+    top: 72px; 
+    z-index: 15;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Push controls to the right */
+    gap: var(--space-4);
+    padding: var(--space-3) var(--edge-pad); /* Less vertical padding than topbar */
+}
+/* Utility class reuse to push contents to the right */
+.document-controls .topbar-right {
+    flex-grow: 1; 
+    justify-content: flex-end; 
+}
+
+/*
+ * NEW STYLES: List/Grid View Toggle (.activity-filter)
+ * Copied from .file-filter styles to ensure the visual look remains consistent.
+ */
+.activity-filter {
+  display: inline-flex;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 4px;
+}
+.activity-filter-button {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #111827;
+  padding: calc(var(--btn-pad-y) - 2px) calc(var(--btn-pad-x) - 2px);
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.activity-filter-button:hover { background: #e9eef5; }
+.activity-filter-active {
+  appearance: none;
+  border: 1px solid #e5e7eb;
+  background: var(--white);
+  color: #111827;
+  padding: calc(var(--btn-pad-y) - 2px) calc(var(--btn-pad-x) - 2px);
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.activity-filter-active:hover { background: #e9eef5; }

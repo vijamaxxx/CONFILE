@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CONFILE — Users</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="../styles/base.css"/>
+  <link rel="stylesheet" href="../styles/admin-styles/dashboard.css"/>
+  <link rel="stylesheet" href="../styles/admin-styles/documents.css"/>
+</head>
+<body class="app-layout">
+  <aside id="sidebar" class="sidebar-panel">
+    <div class="sidebar-header">
+      <div class="sidebar-logo-group">
+        <img src="../Resources/CONFILE-LOGO.png" alt="CONFILE" class="logo-image"/>
+        <span class="logo-text">CONFILE</span>
+      </div>
+      <button id="sidebarClose" class="sidebar-close-button" aria-label="Close sidebar">
+        <i data-lucide="x" class="icon-button"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar-navigation">
+      <h3 class="sidebar-section-title">Admin Menu</h3>
+      <a href="adminDashboard.html" class="nav-link"><i data-lucide="layout-dashboard" class="icon-medium icon-brand"></i><span>Dashboard</span></a>
+      <a href="adminDocuments.html" class="nav-link"><i data-lucide="folder-open" class="icon-medium icon-brand"></i><span>Documents</span></a>
+      <a href="adminUser.html" class="nav-link-active"><i data-lucide="users" class="icon-medium icon-brand"></i><span>Users</span></a>
+      <a href="adminAnalytics.html" class="nav-link"><i data-lucide="bar-chart-3" class="icon-medium icon-brand"></i><span>Analytics</span></a>
+      <a href="adminAudit.html" class="nav-link"><i data-lucide="history" class="icon-medium icon-brand"></i><span>Audit Logs</span></a>
+      <a href="#settings" class="nav-link"><i data-lucide="settings" class="icon-medium icon-brand"></i><span>Settings</span></a>
+      <div class="sidebar-separator"></div>
+      <a href="#login" class="nav-link"><i data-lucide="log-out" class="icon-medium icon-brand"></i><span>Logout</span></a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar"> 
+      <div class="topbar-left">
+        <button id="sidebarToggle" class="mobile-toggle-button" aria-label="Open sidebar">
+          <i data-lucide="menu" class="icon-button"></i>
+        </button>
+        <form class="search-bar" role="search">
+          <i data-lucide="search" class="icon-button"></i>
+          <input class="search-input" type="search" placeholder="Search users..."/>
+        </form>
+      </div>
+      <div class="topbar-right">
+        <button class="notification-button"><i data-lucide="bell" class="icon-button"></i></button>
+        <div class="user-profile">
+          <img class="user-avatar" src="https://api.dicebear.com/8.x/initials/svg?seed=AD" alt="Admin"/>
+          <div class="user-info">
+            <span class="user-name">Alex Doe</span>
+            <span class="user-role">Administrator</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="documents-page">
+      <div class="documents-section list-view">
+        <div class="section-header">
+          <h2 class="section-title">All Users</h2>
+        </div>
+        
+        <div class="doc-table-card">
+          <div class="doc-table-head" aria-hidden="true">
+            <div class="col col-name">Name</div>
+            <div class="col col-email">Email</div>
+            <div class="col col-role">Role</div>
+            <div class="col col-lastactive">Last Active</div>
+            <div class="col col-actions">Actions</div>
+          </div>
+          <div class="doc-table-body" id="userTableBody">
+            <!-- JS will populate this -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="../scripts/admin.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.lucide?.createIcons();
+
+      document.getElementById('newUserBtn')?.addEventListener('click', () => {
+        alert("Show new user creation modal.");
+      });
+    });
+  </script>
+</body>
+</html>
